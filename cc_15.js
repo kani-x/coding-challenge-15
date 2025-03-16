@@ -54,3 +54,20 @@ function addRiskItem(riskName, riskLevel, department) {
     });
     riskDashboard.appendChild(riskCard);
 }
+
+// Task 5: Bulk Risk Updates
+const increaseRiskButton = document.createElement('button');
+increaseRiskButton.textContent = 'Increase Risk Levels';
+increaseRiskButton.addEventListener('click', () => {
+    const riskCards = document.querySelectorAll('.riskCard');
+    riskCards.forEach(card => {
+        const levelElement = card.querySelector('p strong');
+        let currentLevel = levelElement.nextSibling.textContent.trim();
+        if (currentLevel === 'Low') levelElement.nextSibling.textContent = ' Medium';
+        else if (currentLevel === 'Medium') levelElement.nextSibling.textContent = ' High';
+        // Update background color
+        if (currentLevel === 'Low') card.style.backgroundColor = 'yellow';
+        else if (currentLevel === 'Medium') card.style.backgroundColor = 'red';
+    });
+});
+riskDashboard.appendChild(increaseRiskButton);
