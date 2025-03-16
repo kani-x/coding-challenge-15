@@ -71,3 +71,10 @@ increaseRiskButton.addEventListener('click', () => {
     });
 });
 riskDashboard.appendChild(increaseRiskButton);
+
+// Task 6: Event Propagation Fix
+
+riskCard.querySelector('.resolveBtn').addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevent event propagation
+    riskDashboard.removeChild(riskCard);
+});
